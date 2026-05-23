@@ -1,19 +1,23 @@
+import json
+
 print("hey! there it is a emoji project")
 
-emoji = { #dictionary named as emoji
-    "fire" : "🔥",
-    "skull" : "💀",
-    "banana" : "🍌",
-    "monkey" : "🐒",
-}
+with open("emoji.json", "r", encoding = "utf-8") as file:
+    emoji = json.load(file)
 
 def print_requested_emoji():
-    typed = input("enter the emoji: ")
-    if typed in emoji: #basically checking the dictionary
-        print(emoji[typed])
+    
+    requested = input("enter the emoji: ").lower()
+    
+    if requested in emoji: #basically checking the dictionary
+        #now looping inside 
+        print(emoji[requested])
+                
     else:
-        print("not in the memory")
+        print("emoji not found")#calling the function
 
 print_requested_emoji()
+
+
 
     
