@@ -1,7 +1,44 @@
+[
+ 
 {
-    "fire" : "🔥",
-    "banana" : "🍌",
-    "skull": "💀",
-    "monkey": "🐒",
-    "danger": "☠️"
-}
+    "name" : "fire",
+    "emoji" : "🔥",
+    "keywords" : ["lit","burn","light"],
+    "category" : "object"
+
+},
+
+
+{
+    "name" : "banana",
+    "emoji" : "🍌",
+    "keywords" : ["bana","monkeyfav","bone"],
+    "category" : "fruit"
+},
+
+
+{    
+    "name" : "skull",
+    "emoji" : "💀",
+    "keywords" : ["ghost","danger","fright"],
+    "category" : "skeleton"
+},
+
+
+{
+    "name" : "monkey",
+    "emoji" : "🐒",
+    "keywords" : ["monkey","bandar","laugh"],
+    "category" : "emoticon"
+},
+
+{
+    "name": "rocket",
+    "emoji": "🚀",
+    "keywords": ["space", "launch"],
+    "category": "travel"
+ }
+
+
+]
+
