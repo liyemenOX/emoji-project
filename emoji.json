@@ -37,8 +37,77 @@
     "emoji": "🚀",
     "keywords": ["space", "launch"],
     "category": "travel"
- }
+},
 
+{
+    "name" : "pizza",
+    "emoji" : "🍕",
+    "keywords" : ["food","cheese","slice"],
+    "category" : "food"
+},
+
+{
+    "name" : "heart",
+    "emoji" : "❤️",
+    "keywords" : ["love","like","romance"],
+    "category" : "emoticon"
+},
+
+{
+    "name" : "alien",
+    "emoji" : "👽",
+    "keywords" : ["ufo","space","martian"],
+    "category" : "creature"
+},
+
+{
+    "name" : "guitar",
+    "emoji" : "🎸",
+    "keywords" : ["music","rock","instrument"],
+    "category" : "object"
+},
+
+{
+    "name" : "coffee",
+    "emoji" : "☕",
+    "keywords" : ["drink","morning","cafe"],
+    "category" : "drink"
+},
+
+{
+    "name" : "car",
+    "emoji" : "🚗",
+    "keywords" : ["drive","vehicle","automobile"],
+    "category" : "travel"
+},
+
+{
+    "name" : "ghost",
+    "emoji" : "👻",
+    "keywords" : ["scary","spooky","halloween"],
+    "category" : "creature"
+},
+
+{
+    "name" : "crown",
+    "emoji" : "👑",
+    "keywords" : ["king","queen","royal"],
+    "category" : "object"
+},
+
+{
+    "name" : "apple",
+    "emoji" : "🍎",
+    "keywords" : ["fruit","red","healthy"],
+    "category" : "fruit"
+},
+
+{
+    "name" : "robot",
+    "emoji" : "🤖",
+    "keywords" : ["bot","ai","tech"],
+    "category" : "creature"
+}
 
 ]
 
