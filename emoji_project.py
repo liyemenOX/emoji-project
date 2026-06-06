@@ -13,24 +13,30 @@ def print_requested_emoji():
     
     global found_any_emoji #introduced a global variable 
     
-    matched_item = partial_search()# introduced a matched_item for recieving 
+    multiple_result = partial_search()
+    
+    if not multiple_result:
+        print("no matching emoji found in database")
+        return     
 
-    print(matched_item["emoji"])
+    for item in  multiple_result:
+        print(item["emoji"])
     
     
 def partial_search():
 
+    multiple_result = []
+    
     global found_any_emoji
     for item in emoji:
         for word in item["keywords"]:
             if requested in item["name"]  or requested in word:
         #starting to improve the search part of partial check 
-                found_any_emoji == True
-                return item
-    pass
-    if not found_any_emoji:
-        print("emoji not found")    
-            
+                found_any_emoji = True
+                multiple_result.append(item)
+                break;
+    return multiple_result
+           
 print_requested_emoji()
 
 
