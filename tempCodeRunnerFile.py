@@ -11,11 +11,10 @@ class Emoji:
 print("hey! there it is a emoji project")
 
 class Emoji_Database:
-    def __init__(self,file_path):
-        self.file_path = file_path
+    def __init__(self,filename):
         self.emoji = []
         self.load_emojis()
-        
+        self.filename = filename
         self.search_history = []
         
     def load_emojis(self):
@@ -40,7 +39,7 @@ class Emoji_Database:
                 continue
             
             for word in item.keywords:
-                if requested in word or requested in item.category:#starting to improve the search part of partial check 
+                if requested in word or requested in item.category:  #starting to improve the search part of partial check 
                     self.found_any_emoji = True
                     multiple_result.append(item)
                 break   
@@ -60,7 +59,6 @@ if db.found_any_emoji and multiple_result:
         
 else:
     print("\nNo matching emojs found!")
-
 
 
 
