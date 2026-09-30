@@ -12,10 +12,10 @@ print("hey! there it is a emoji project")
 
 class Emoji_Database:
     def __init__(self,filename):
+        self.filename = filename
         self.emoji = []
         self.search_history = []
         self.load_emojis()
-        self.filename = filename
         
     def load_emojis(self):
         with open("emoji.json", "r", encoding = "utf-8") as file:
@@ -48,6 +48,19 @@ class Emoji_Database:
         self.search_history.append(multiple_result)
         return multiple_result
     
+    def add_to_history(self):
+        print("\n ---PRINT SEARCH HISTORY--- ")
+        if not self.search_history:
+            print("no history found yet")
+        else:
+            for index,sublist in enumerate(self.search_history, 1):
+                print(f"{index}. Search entry generated these results: ")
+                if not sublist:
+                    print("no emojis found in this search")
+                else:
+                    for emoji_obj in sublist:
+                        print(f" ->{emoji_obj.emoji}{emoji_obj.name}")
+        
 db = Emoji_Database("emoji.json")
 
 requested = input("enter the emoji:").strip().lower()
@@ -62,8 +75,7 @@ if db.found_any_emoji and multiple_result:
 else:
     print("\nNo matching emojs found!")
 
-
-
+db.add_to_history()
 
 
 

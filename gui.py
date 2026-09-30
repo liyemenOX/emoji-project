@@ -15,9 +15,9 @@ def search():
     
     matching_emojis = db.partial_search(user_input)
     for item in matching_emojis:
-        result_box.insert(END,item.emoji)
+        result_box.insert(END,item.emoji,item.category)
     
-photo = PhotoImage(file = '/home/useer456/Downloads/skull.png')
+photo = PhotoImage(file = 'skull.png')
 
 label = Label(window,
               text = "GLOBAL EMOJI BAR",
@@ -55,7 +55,7 @@ result_box = Listbox(window,
                      font = ("Arial",24),
                      width = 20,
                      height = 6,
-                     bg = "black",
+                     bg = "#202020",
                      fg = "#00FF00",
                      selectbackground = "cyan",
                      selectmode = SINGLE)

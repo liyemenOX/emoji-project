@@ -1,64 +1,82 @@
-from tkinter import *
+import json
 
-from emoji_project import Emoji_Database
+class Emoji:
+    def __init__(self,name,emoji,keywords,category):
+        self.name = name
+        self.emoji = emoji
+        self.keywords = keywords
+        self.category = category
 
+        
+print("hey! there it is a emoji project")
+
+class Emoji_Database:
+    def __init__(self,filename):
+        self.filename = filename
+        self.emoji = []
+        self.search_history = []
+        self.load_emojis()
+        
+    def load_emojis(self):
+        with open("emoji.json", "r", encoding = "utf-8") as file:
+            emoji = json.load(file)
+    
+        for item in emoji:
+            new_emoji_object = Emoji(item["name"],item["emoji"],item["keywords"],item["category"])
+            self.emoji.append(new_emoji_object)
+            
+      
+    
+    def partial_search(self,requested):
+        
+        multiple_result = []
+        self.found_any_emoji = False
+         
+        for item in self.emoji:
+            if requested in item.name or requested in item.category:
+                self.found_any_emoji = True
+                multiple_result.append(item)
+                
+            else:
+                for word in item.keywords:
+                    if requested in word:  #starting to improve the search part of partial check 
+                        self.found_any_emoji = True
+                        multiple_result.append(item)
+                        break
+                
+                        
+        self.search_history.append(multiple_result)
+        return multiple_result
+    
+    def add_to_history(self):
+        print("\n ---PRINT SEARCH HISTORY--- ")
+        if not self.search_history:
+            print("no history found yet")
+        else:
+            for index,sublist in enumerate(self.search_history, 1):
+                print(f"{index}. Search entry generated these results: ")
+                if not sublist:
+                    print("no emojis found in this search")
+                else:
+                    for emoji_obj in sublist:
+                        print(f" ->{emoji_obj.emoji}{emoji_obj.name}")
+        
 db = Emoji_Database("emoji.json")
 
-window = Tk()
+requested = input("enter the emoji:").strip().lower()
 
-def search():
-    user_input = entry.get()
-    print("you have clicked the button ")
-    print(f"you have searched for: {user_input}")
+multiple_result = db.partial_search(requested)
+
+if db.found_any_emoji and multiple_result:
+    print("\nMatching Emojis:")
+    for emoji_obj in multiple_result:  
+        print(emoji_obj.emoji,emoji_obj.name,emoji_obj.category) 
     
-    result_box.delete(0,END)
+else:
+    print("\nNo matching emojs found!")
+
+db.add_to_history()
+
+
+
     
-    matching_emojis = db.partial_search(user_input)
-    for item in matching_emojis:
-        result_box.insert(END,item.emoji)
-    
-photo = PhotoImage(file = '/home/useer456/Downloads/skull.png')
-
-label = Label(window,
-              text = "GLOBAL EMOJI BAR",
-              font = ('Arial',40,'bold'),
-              fg = "#00FF00",
-              bg = "black",
-              relief = RAISED,
-              bd = 10,
-              padx = 20,
-              pady = 20,
-              image = photo,
-              compound = 'bottom')
-label.pack()
-
-entry = Entry(window,
-              font = ("Arial",50),
-              fg ="#E6D00F",
-              bg = 'cyan',
-              )
-entry.pack()
-
-button = Button(window,
-                text = "clk to search",
-                command = search,
-                font = ("Comic Sand",30),
-                fg = "#00FF00",
-                bg = "black",
-                activeforeground = "#00FF00",
-                activebackground = "black",
-                state = ACTIVE,
-                compound = 'top')
-button.pack()
-
-result_box = Listbox(window,
-                     font = ("Arial",24),
-                     width = 20,
-                     height = 6,
-                     bg = "black",
-                     fg = "#00FF00",
-                     selectbackground = "cyan",
-                     selectmode = SINGLE)
-result_box.pack(pady = 10)
-
-window.mainloop()
